@@ -1,0 +1,53 @@
+{
+  "skill_name": "nse-multibagger",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Find top NSE multibagger candidates.",
+      "expected_output": "NSE multibagger screen with universe (NSE 500 + qualified small/midcaps), data sources used, exclusions with reasons, screening methodology, top 10 ranked candidates with growth/quality/valuation/technical/risk scores, Peter Lynch classification for each, deep dives for top 2-3 candidates, worst-case scenarios, avoid/watchlist names, position risk labels, and Lynch-style one-liner.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Screen NSE 500 and smaller midcaps for undervalued growth stocks.",
+      "expected_output": "Quality-first screen across NSE 500 plus qualified small/midcaps with India-specific hard rejection filters: promoter pledge >20%, auditor quals, ICR <1.5x, CFO/PAT <0.7, liquidity check. Value-trap rejection (cheap for bad reason vs cheap for temporary reason). Ranked candidates with score breakdown.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Analyze CDSL like Peter Lynch.",
+      "expected_output": "Single-stock Lynch-style deep dive for CDSL: business understandability (central securities depository), visible growth runway (Demat account growth, new investor onboarding), Lynch classification (Fast Grower), financial strength (ROE, margins, cash conversion), valuation comfort (P/E vs growth), technical setup, 3-5 year bull/base/bear scenarios, worst case, and thesis breakers.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Which small/midcap NSE stocks have multibagger potential but low debt?",
+      "expected_output": "Screen emphasizing small/midcap candidates with Debt/Equity <0.5, ICR >3x, positive CFO, manageable promoter pledge, clean governance. Ranked scores with growth/quality/valuation/technical/risk breakdown, position risk labels, and worst-case scenario for each.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Give worst-case scenario for this multibagger candidate.",
+      "expected_output": "Worst-case scenario with all six dimensions: earnings fail to grow or reverse, margin pressure destroys operating leverage, debt or working capital stress appears, promoter/governance concern emerges, valuation de-rates despite growth, technical breakdown below long-term support, and permanent capital loss path. India-specific triggers must be checked.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Is this stock a true multibagger or a value trap?",
+      "expected_output": "Value-trap filter covering: is growth real (CFO vs PAT), debt sustainability (Debt/EBITDA, ICR), cash conversion quality, governance (auditor issues, RPTs, pledge), cyclicality (peak vs trough earnings), sector structural risk, valuation (cheap for temporary vs structural reason), technical confirmation, final verdict with position risk label (Core/Satellite/Speculative/Avoid).",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Analyze one midcap that could compound 5x in 5 years.",
+      "expected_output": "Deep dive with: business story, market opportunity size, why it can compound (addressable market, execution edge, sector tailwind), 3-5 year financial projections, bull/base/bear scenarios, Lynch classification, valuation comfort today, technical base confirmation, worst-case scenario, thesis breakers, and final view with position risk label.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Find NSE stocks where promoter is buying but market is ignoring them.",
+      "expected_output": "Screen for: promoter increasing stake in recent quarters, stock underperforming sector/index despite improving fundamentals, reasonable valuation, improving financials. Combine with hard rejection filters, score for thesis quality, and give deep dive on top 2-3 with conviction level and position risk label.",
+      "files": []
+    }
+  ]
+}

@@ -14,15 +14,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Create necessary directories
-RUN mkdir -p /app/skills /app/chroma_db /app/setup
+RUN mkdir -p /app/chroma_db
 
-# Copy the clone script and run it during build
-COPY setup/clone-skills.sh /app/setup/clone-skills.sh
-RUN chmod +x /app/setup/clone-skills.sh
-RUN /app/setup/clone-skills.sh
-
-# Copy custom skills
-COPY custom-skills /app/skills/custom
+# Copy skills folder directly into the image
+COPY skills /app/skills
 
 # Copy application code
 COPY indexer.py server.py /app/

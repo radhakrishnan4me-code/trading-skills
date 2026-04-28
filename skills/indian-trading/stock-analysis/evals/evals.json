@@ -1,0 +1,71 @@
+{
+  "skill_name": "stock-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Analyze HAL completely.",
+      "expected_output": "Complete NSE stock analysis report for Hindustan Aeronautics with business profile, news, financials with sector-specific defence metrics, valuation, technicals, 1-year bull/base/bear scenarios, investor checklist using Buffett/Munger lens, red flags covering order book and government dependency, final AI view, and investor-style one-liner. Must flag defence sector risks (regulatory, order delays, margin pressure).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What upside can I expect in TITAN over one year?",
+      "expected_output": "Bull/base/bear 1-year price ranges with upside/downside percentages, key assumptions for each scenario, triggers, invalidation points, and confidence level. Include jewellery segment dynamics, gold price sensitivity, and festive season context.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Is DMART expensive or worth holding long term?",
+      "expected_output": "Quality + value investor assessment using Damani-style lens — simple business model, cash generation, working capital management, inventory turnover, valuation vs growth, downside protection, and final hold/accumulate/watchlist view with confidence.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Analyze COFORGE like a quality + value investor.",
+      "expected_output": "Investor mental-model checklist for COFORGE using Buffett/Munger or Peter Lynch lens — business understandability, earnings growth runway (deal pipeline), moat (IT sector), management quality, ROE/ROCE, valuation vs growth, debt, and final recommendation with investor lens verdict.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "What can go wrong with AJANTPHARMA stock?",
+      "expected_output": "Red flag analysis for Ajanta Pharma covering: USFDA regulatory risk as binary hard trigger, earnings quality (US vs domestic revenue mix), debt, sector risk (pharma), working capital, promoter pledge, subsidiary export risk, and thesis breakers. Must explicitly check USFDA 483 citations.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Give me the final investor-style one-liner for IRCTC.",
+      "expected_output": "Concise Jhunjhunwala-style or Damani-style educational one-liner for IRCTC without claiming to quote any investor. Must cover monopoly strength, growth drivers, PSU governance caveat, and conviction angle in one sentence.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Find top NSE multibagger candidates.",
+      "expected_output": "NSE multibagger screen with universe (NSE 500 + qualified small/midcaps), data sources used, exclusions with reasons, top 10 ranked candidates with growth/quality/valuation/technical/risk scores, Peter Lynch classification, deep dives for top 2-3 candidates, worst-case scenarios, avoid/watchlist names, and Lynch-style one-liner.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Screen NSE 500 and smaller midcaps for undervalued growth stocks.",
+      "expected_output": "Quality-first screen across NSE 500 plus qualified small/midcaps with India-specific liquidity/governance filters, hard rejection checks (promoter pledge >20%, auditor quals, ICR <1.5x, CFO/PAT <0.7), value-trap rejection criteria, and ranked undervalued high-growth candidates with score breakdown.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Analyze ZOMATO like Peter Lynch.",
+      "expected_output": "Single-stock Peter Lynch-style deep dive for ZOMATO: business understandability, visible growth runway (quick commerce, dining out), Lynch classification, financial quality (cash burn vs path to profitability), valuation comfort, technical setup, 3-5 year bull/base/bear scenarios, worst case, and thesis breakers with position risk label.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Give worst-case scenario for a loss-making midcap turnaround candidate.",
+      "expected_output": "Worst-case scenario covering: earnings fail to turn, cash burn continues, working capital stress, debt covenant breach risk, promoter pledge trigger, governance concern emerges, valuation de-rates despite revenue growth, technical breakdown, and permanent capital loss scenario. Must include India-specific triggers.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Is this smallcap a true multibagger or a value trap?",
+      "expected_output": "Value-trap filter: is growth real or accounting-driven (cash vs PAT), debt sustainability, cash conversion quality, governance (auditor issues, RPTs), cyclicality, sector structural risk, valuation (why is it cheap — temporary issue vs structural problem), technical confirmation, final verdict with position risk label (Core/Satellite/Speculative/Avoid), and worst case.",
+      "files": []
+    }
+  ]
+}
