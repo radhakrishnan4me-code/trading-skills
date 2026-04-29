@@ -1,33 +1,40 @@
 import os
 from pathlib import Path
 from mcp.server.fastmcp import FastMCP
-from pydantic import BaseModel
 from indexer import SkillIndexer
 
-# Configuration
 SKILLS_DIR = os.environ.get("SKILLS_DIR", "/app/skills")
 CHROMA_DB = os.environ.get("CHROMA_DB", "/app/chroma_db")
 
-# Initialize MCP Server
 mcp = FastMCP("mcp-skillset")
 indexer = SkillIndexer(skills_dir=SKILLS_DIR, db_path=CHROMA_DB)
+
+# ── Host rewrite middleware ──────────────────────────────────────────
+class HostRewriteMiddleware:
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            headers = [
+                (b"host", b"localhost") if k == b"host" else (k, v)
+                for k, v in scope.get("headers", [])
+            ]
+            scope = {**scope, "headers": headers}
+        await self.app(scope, receive, send)
+# ────────────────────────────────────────────────────────────────────
 
 @mcp.tool()
 def skills_search(query: str, n_results: int = 5) -> str:
     """Semantic search across all skills using a text query."""
     results = indexer.search(query, n_results)
-    
     if not results or not results['documents'] or not results['documents'][0]:
         return "No skills found matching the query."
-    
     response = "Found the following skills:\n\n"
-    metadatas = results['metadatas'][0]
-    
-    for i, meta in enumerate(metadatas):
+    for i, meta in enumerate(results['metadatas'][0]):
         response += f"{i+1}. **{meta['name']}** (Category: {meta['category']})\n"
         response += f"   Description: {meta['description']}\n"
         response += f"   Tags: {meta['tags']}\n\n"
-        
     return response
 
 @mcp.tool()
@@ -37,7 +44,6 @@ def skill_get(name: str) -> str:
         results = indexer.collection.get(ids=[name])
         if not results['metadatas']:
             return f"Skill '{name}' not found."
-            
         filepath = results['metadatas'][0]['filepath']
         with open(filepath, 'r', encoding='utf-8') as f:
             return f.read()
@@ -67,14 +73,10 @@ def skill_create(name: str, category: str, description: str, content: str) -> st
     """Create a new skill from parameters."""
     target_dir = Path(SKILLS_DIR) / category / name
     target_dir.mkdir(parents=True, exist_ok=True)
-    
     filepath = target_dir / "SKILL.md"
-    
     file_content = f"---\nname: {name}\ndescription: {description}\ntags: [{category}]\n---\n{content}"
-    
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(file_content)
-        
     indexer.reindex()
     return f"Skill {name} created in {category} and index updated."
 
@@ -106,19 +108,13 @@ if __name__ == "__main__":
         indexer.collection.get(limit=1)
     except Exception:
         indexer.reindex()
-        
+
     host = os.environ.get("MCP_HOST", "0.0.0.0")
     port = int(os.environ.get("MCP_PORT", "3001"))
-    
+
     print(f"Starting MCP Server on Streamable HTTP at {host}:{port}...")
-    
+
     import uvicorn
     app = mcp.streamable_http_app()
-    uvicorn.run(
-        app,
-        host=host,
-        port=port,
-        forwarded_allow_ips="*",
-        proxy_headers=True,
-        server_header=False
-    )
+    app = HostRewriteMiddleware(app)   # ← wraps app, fixes 421
+    uvicorn.run(app, host=host, port=port, forwarded_allow_ips="*", proxy_headers=True)
