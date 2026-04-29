@@ -109,12 +109,11 @@ if __name__ == "__main__":
     except Exception:
         indexer.reindex()
         
-    print("Starting MCP Server on SSE...")
-    # FastMCP uses uvicorn internally for SSE transport. 
-    # Transport will be defined by CLI or environment, but here we can just call run
-    # If the user runs `python server.py`, we run via SSE.
     host = os.environ.get("MCP_HOST", "0.0.0.0")
     port = int(os.environ.get("MCP_PORT", "3001"))
     
-    # FastMCP's SSE server uses starlette
-    mcp.run(transport="sse")
+    print(f"Starting MCP Server on SSE at {host}:{port}...")
+    
+    import uvicorn
+    app = mcp.sse_app()
+    uvicorn.run(app, host=host, port=port)

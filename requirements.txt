@@ -1,7 +1,8 @@
-mcp==1.2.0
-chromadb==0.4.24
-sentence-transformers==2.5.1
-uvicorn==0.27.1
-starlette==0.36.3
-PyYAML==6.0.1
-pydantic==2.6.1
+mcp
+chromadb
+sentence-transformers
+uvicorn
+starlette
+fastapi
+PyYAML
+pydantic>=2.10.1
