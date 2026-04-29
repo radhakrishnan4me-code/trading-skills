@@ -112,8 +112,8 @@ if __name__ == "__main__":
     host = os.environ.get("MCP_HOST", "0.0.0.0")
     port = int(os.environ.get("MCP_PORT", "3001"))
     
-    print(f"Starting MCP Server on SSE at {host}:{port}...")
+    print(f"Starting MCP Server on Streamable HTTP at {host}:{port}...")
     
     import uvicorn
-    app = mcp.sse_app()
+    app = mcp.streamable_http_app()
     uvicorn.run(app, host=host, port=port)
