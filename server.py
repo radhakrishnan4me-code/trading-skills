@@ -3,26 +3,13 @@ from pathlib import Path
 from mcp.server.fastmcp import FastMCP
 from indexer import SkillIndexer
 
+# Configuration
 SKILLS_DIR = os.environ.get("SKILLS_DIR", "/app/skills")
 CHROMA_DB = os.environ.get("CHROMA_DB", "/app/chroma_db")
 
+# Initialize MCP Server
 mcp = FastMCP("mcp-skillset")
 indexer = SkillIndexer(skills_dir=SKILLS_DIR, db_path=CHROMA_DB)
-
-# ── Host rewrite middleware ──────────────────────────────────────────
-class HostRewriteMiddleware:
-    def __init__(self, app):
-        self.app = app
-
-    async def __call__(self, scope, receive, send):
-        if scope["type"] in ("http", "websocket"):
-            headers = [
-                (b"host", b"localhost") if k == b"host" else (k, v)
-                for k, v in scope.get("headers", [])
-            ]
-            scope = {**scope, "headers": headers}
-        await self.app(scope, receive, send)
-# ────────────────────────────────────────────────────────────────────
 
 @mcp.tool()
 def skills_search(query: str, n_results: int = 5) -> str:
@@ -115,6 +102,16 @@ if __name__ == "__main__":
     print(f"Starting MCP Server on Streamable HTTP at {host}:{port}...")
 
     import uvicorn
+    import mcp.server.transport_security as ts
+
+    # Disable DNS rebinding protection to allow Docker container-to-container calls
+    ts.TransportSecurityMiddleware._validate_host = lambda self, host: True
+
     app = mcp.streamable_http_app()
-    app = HostRewriteMiddleware(app)   # ← wraps app, fixes 421
-    uvicorn.run(app, host=host, port=port, forwarded_allow_ips="*", proxy_headers=True)
+    uvicorn.run(
+        app,
+        host=host,
+        port=port,
+        forwarded_allow_ips="*",
+        proxy_headers=True
+    )
