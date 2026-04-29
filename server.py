@@ -75,7 +75,6 @@ def skill_create(name: str, category: str, description: str, content: str) -> st
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(file_content)
         
-    # Trigger reindex
     indexer.reindex()
     return f"Skill {name} created in {category} and index updated."
 
@@ -103,7 +102,6 @@ tags: [openalgo]
 """
 
 if __name__ == "__main__":
-    # Check if index exists, if not, build it
     try:
         indexer.collection.get(limit=1)
     except Exception:
@@ -116,4 +114,11 @@ if __name__ == "__main__":
     
     import uvicorn
     app = mcp.streamable_http_app()
-    uvicorn.run(app, host=host, port=port)
+    uvicorn.run(
+        app,
+        host=host,
+        port=port,
+        forwarded_allow_ips="*",
+        proxy_headers=True,
+        server_header=False
+    )
