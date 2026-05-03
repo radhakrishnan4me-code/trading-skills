@@ -63,7 +63,7 @@ The report always shows concrete ₹ numbers (e.g., `₹183.50`) — never raw s
 | Shareholding pattern | Screener.in / BSE filings |
 | Quarterly results | BSE corporate filings |
 | Management commentary | Screener.in concall transcripts |
-| News (last 90 days) | ET Markets, Mint, Business Standard, CNBCTV18, Moneycontrol |
+| News (last 90 days) | Moneycontrol, Economic Times, Yahoo Finance, Mint, Business Standard, CNBCTV18, and general web search |
 | Technical indicators | TradingView, Chartink |
 | Credit ratings | CRISIL, ICRA, CARE websites |
 | Sector data | CMIE, MOSPI, RBI, IBEF |

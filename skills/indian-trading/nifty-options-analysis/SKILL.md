@@ -25,7 +25,7 @@ If the user provides partial data, work with what's available and flag what's mi
 
 ### Greeks — how they affect options pricing
 
-- **Delta**: Premium change per 1-pt Nifty move. ATM ≈ 0.50. Nifty lot size = 75 units (verify current lot size — changed from 50→75 in 2024). A 100-pt move on ATM call ≈ ₹3,750/lot at delta 0.50.
+- **Delta**: Premium change per 1-pt Nifty move. ATM ≈ 0.50. Nifty lot size = 65 units (verify current lot size). A 100-pt move on ATM call ≈ ₹3,250/lot at delta 0.50.
 - **Theta**: Premium lost per day from time passage. Weekly ATM at 7 DTE ≈ ₹-13/day. On expiry day, premiums can collapse 40–60% in final hours.
 - **Vega**: Premium change per 1% IV shift. ATM vega ≈ 6 → ₹450/lot per 1% IV change. IV crush post-events can destroy premium even when direction is correct.
 - **Gamma**: Rate of delta change. ATM has highest gamma → convexity advantage on trending days.

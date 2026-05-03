@@ -55,7 +55,7 @@ Use `web_search` and `web_fetch` tools sequentially. Fetch **every** section bel
 | Latest quarterly results (numbers + commentary) | BSE corporate filings: `https://www.bseindia.com/stock-share-price/[COMPANY]/[TICKER]/[BSE_CODE]/` | NSE: `https://www.nseindia.com/get-quotes/equity?symbol=[TICKER]` |
 | Annual report / investor presentation | Company IR page (search: `"[COMPANY]" investor relations annual report site:[company].com`) | BSE filings PDF |
 | Management commentary & concall highlights | Screener.in concall transcripts tab OR `web_search: "[COMPANY] Q[N] FY[YY] earnings call transcript"` | Trendlyne concall |
-| News (last 90 days) | `web_search: "[TICKER] news 2025"` — use only ET Markets, Mint, Business Standard, Hindu BusinessLine, CNBCTV18, Moneycontrol | — |
+| News (last 90 days) | `web_search: "[TICKER] news 2025"` — use Moneycontrol, Economic Times, Yahoo Finance, Mint, Business Standard, Hindu BusinessLine, CNBCTV18, and general web search | — |
 | Sector / industry data | CMIE / MOSPI / RBI reports via `web_search` | IBEF.org sector reports |
 | Technical indicators | `web_search: "[TICKER] technical analysis tradingview"` then fetch | Chartink.com screener |
 | Credit ratings (if applicable) | `web_search: "[COMPANY] credit rating CRISIL ICRA CARE 2025"` | — |
