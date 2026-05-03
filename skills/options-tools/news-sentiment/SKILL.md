@@ -1,20 +1,15 @@
 ---
 name: news-sentiment
 description: Get recent news and sentiment for a stock. Use when user asks about news, headlines, sentiment, what's happening with a stock, or recent developments.
-dependencies: ["trading-skills"]
 ---
 
 # News Sentiment
 
-Fetch recent news from Yahoo Finance.
+Fetch recent news from the web.
 
 ## Instructions
 
-> **Note:** If `uv` is not installed or `pyproject.toml` is not found, replace `uv run python` with `python` in all commands below.
-
-```bash
-uv run python scripts/news.py SYMBOL [--limit LIMIT]
-```
+Use the `google_search` or general web search tool to search for recent news for the ticker symbol. Specifically, refer to Moneycontrol, Economic Times, Yahoo Finance, or similar financial sites to retrieve news items.
 
 ## Arguments
 
@@ -23,12 +18,4 @@ uv run python scripts/news.py SYMBOL [--limit LIMIT]
 
 ## Output
 
-Returns JSON with:
-- `articles` - Array of recent news with title, publisher, date, link
-- `summary` - Brief summary of overall sentiment
-
-Present key headlines and note any significant news that could impact the stock.
-
-## Dependencies
-
-- `yfinance`
+Present key headlines from these sites and note any significant news that could impact the stock. Provide a summary of overall sentiment.
